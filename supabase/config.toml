@@ -1,0 +1,5 @@
+[functions.imagekit-auth]
+verify_jwt = false
+
+[functions.notify-new-order]
+verify_jwt = true
