@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-black mb-4 text-gray-900">Keranjang Saya</h2>
 
     <div v-if="cartStore.items.length === 0" class="bg-white p-12 text-center rounded-3xl shadow-sm border border-gray-200">
-      <svg class="w-20 h-20 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+      <svg class="w-20 h-20 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h[...]"></path></svg>
       <p class="text-gray-500 font-medium mb-6">Keranjang belanja Anda masih kosong.</p>
       <button @click="emit('changeTab', 'home')" class="px-6 py-3 bg-blue-50 text-blue-600 font-bold rounded-xl hover:bg-blue-100 transition flex items-center justify-center gap-2 mx-auto">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
@@ -15,7 +15,7 @@
       
       <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-200">
         <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
-          <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1[...]"></path></svg>
           Alamat Pengiriman
         </h3>
         
@@ -26,20 +26,20 @@
             </option>
           </select>
           <p v-if="selectedAddress" class="text-xs text-gray-500 mt-2 ml-1 flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a[...]"></path></svg>
             {{ selectedAddress.recipient_phone }}
           </p>
         </div>
         <div v-else class="text-center py-5 bg-orange-50 rounded-xl border border-orange-100">
           <p class="text-sm text-orange-600 font-medium mb-3">Anda belum menambahkan alamat.</p>
-          <button @click="emit('changeTab', 'setting')" class="text-xs font-bold bg-orange-500 text-white px-5 py-2 rounded-lg hover:bg-orange-600 transition shadow-sm">Tambah Alamat Profil</button>
+          <button @click="openAddressModal" class="text-xs font-bold bg-orange-500 text-white px-5 py-2 rounded-lg hover:bg-orange-600 transition shadow-sm">Tambah Alamat Profil</button>
         </div>
       </div>
 
       <div class="space-y-4">
         <div v-for="group in cartStore.groupedByMerchant" :key="group.merchant_id" class="bg-white p-5 rounded-3xl shadow-sm border border-gray-200">
           <h3 class="font-black text-gray-800 border-b border-gray-100 pb-3 mb-4 flex items-center gap-2">
-            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V10l-2.5-4h-9L5 10v11M3 10h18M5 21h14M7 10v3a2 2 0 004 0v-3m4 0v3a2 2 0 004 0v-3"></path></svg>
+            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V10l-2.5-4h-9L5 10v1[...]"></path></svg>
             {{ group.merchant_name }}
           </h3>
           
@@ -58,7 +58,7 @@
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>
                 </button>
                 <span class="font-black text-sm w-6 text-center text-gray-800">{{ item.quantity }}</span>
-                <button @click="cartStore.addItem(item, { id: group.merchant_id, full_name: group.merchant_name, latitude: item.lat, longitude: item.lng })" class="w-8 h-8 flex items-center justify-center font-bold text-white bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 transition">
+                <button @click="cartStore.addItem(item, { id: group.merchant_id, full_name: group.merchant_name, latitude: item.lat, longitude: item.lng })" class="w-8 h-8 flex items-center justify-ce[...]">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                 </button>
               </div>
@@ -69,7 +69,7 @@
 
       <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-200">
         <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
-          <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+          <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h1[...]"></path></svg>
           Metode Pembayaran
         </h3>
         
@@ -82,7 +82,7 @@
           >
             <input type="radio" :value="method.id" v-model="paymentMethod" class="hidden" />
             <span v-if="method.icon" class="text-2xl shrink-0">{{ method.icon }}</span>
-            <svg v-else class="w-7 h-7 text-gray-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <svg v-else class="w-7 h-7 text-gray-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 [...]"></path></svg>
             <div class="min-w-0">
               <p class="font-bold text-sm text-gray-800 truncate">{{ method.name }}</p>
               <p class="text-[10px] text-gray-500 truncate">{{ method.description }}</p>
@@ -106,7 +106,7 @@
           <div class="flex justify-between text-sm text-gray-500">
             <span class="flex items-center gap-1.5">
               Ongkos Kirim 
-              <svg v-if="isCalculatingDistance" class="animate-spin w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+              <svg v-if="isCalculatingDistance" class="animate-spin w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="[...]"></path></svg>
               <span v-else-if="jarakTempuhKm > 0" class="text-[10px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-mono font-bold">{{ jarakTempuhKm.toFixed(1) }} km</span>
             </span>
             <span class="font-medium text-gray-700">Rp {{ formatRupiah(ongkosKirim) }}</span>
@@ -132,9 +132,9 @@
           <span class="font-black text-2xl text-blue-600">Rp {{ formatRupiah(finalTotalPrice) }}</span>
         </div>
 
-        <button @click="openCheckoutConfirm" :disabled="isCheckoutDisabled" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-extrabold shadow-md transition disabled:opacity-50 flex items-center justify-center gap-2">
-          <svg v-if="isCheckoutLoading || isCalculatingDistance" class="animate-spin w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-          <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <button @click="openCheckoutConfirm" :disabled="isCheckoutDisabled" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-extrabold shadow-md transition disabled:opa[...]">
+          <svg v-if="isCheckoutLoading || isCalculatingDistance" class="animate-spin w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-[...]"></path></svg>
+          <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 [...]"></path></svg>
           Buat Pesanan Sekarang
         </button>
       </div>
@@ -143,7 +143,7 @@
 
     <div v-if="showConfirmCheckout" class="fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4 animate-fade-in">
       <div class="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl text-center">
-        <svg class="w-16 h-16 mx-auto text-blue-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        <svg class="w-16 h-16 mx-auto text-blue-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 [...]"></path></svg>
         <h3 class="text-xl font-black text-gray-900 mb-2">Konfirmasi Pesanan</h3>
         <p class="text-sm text-gray-500 mb-2">
           Total Pembayaran: <br/><strong class="text-blue-600 text-2xl">Rp {{ formatRupiah(finalTotalPrice) }}</strong>
@@ -158,16 +158,75 @@
         </div>
       </div>
     </div>
+
+    <!-- MODAL TAMBAH ALAMAT -->
+    <div v-if="showAddressModal" class="fixed inset-0 z-[100] bg-black/60 flex items-center justify-center p-4">
+      <div class="bg-white w-full max-w-lg max-h-[90vh] rounded-3xl flex flex-col shadow-2xl animate-fade-in overflow-hidden">
+        <div class="p-6 border-b border-gray-200 flex justify-between items-center shrink-0">
+          <h3 class="text-lg font-bold">Tambah Alamat Pengiriman</h3>
+          <button @click="closeAddressModal" class="text-gray-400 hover:text-gray-600 font-bold text-xl">&times;</button>
+        </div>
+        
+        <div class="p-6 overflow-y-auto grow">
+          <div class="space-y-4">
+            <div>
+              <label class="text-xs font-bold text-gray-500">Nama Penerima</label>
+              <input v-model="addressForm.recipient_name" type="text" placeholder="Masukkan nama penerima" class="w-full mt-1 p-3 bg-gray-50 rounded-xl outline-none focus:ring-2 focus:ring-blue-300 border border-gray-200">
+            </div>
+            <div>
+              <label class="text-xs font-bold text-gray-500">Telepon</label>
+              <input v-model="addressForm.recipient_phone" type="text" placeholder="08xxxxxxxxxx" class="w-full mt-1 p-3 bg-gray-50 rounded-xl outline-none focus:ring-2 focus:ring-blue-300 border border-gray-200">
+            </div>
+            <div>
+              <label class="text-xs font-bold text-gray-500">Detail Alamat</label>
+              <textarea v-model="addressForm.address_detail" rows="2" placeholder="Jalan, No. Rumah, RT/RW, dll" class="w-full mt-1 p-3 bg-gray-50 rounded-xl outline-none focus:ring-2 focus:ring-blue-300 border border-gray-200"></textarea>
+            </div>
+            
+            <div class="flex items-center gap-2 mt-2">
+              <input type="checkbox" id="is_primary" v-model="addressForm.is_primary" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+              <label for="is_primary" class="text-sm font-bold text-gray-700">Jadikan sebagai alamat utama</label>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1 mt-2">
+                <label class="text-xs font-bold text-gray-500">Tentukan Titik Peta (Wajib)</label>
+                <button type="button" @click="centerToUserLocation" class="text-[10px] bg-blue-100 text-blue-700 px-2 py-1 rounded font-bold hover:bg-blue-200 flex items-center gap-1">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1[...]"></path></svg>
+                  Ke Lokasi Saya
+                </button>
+              </div>
+              <div id="mapContainer" class="w-full h-48 rounded-xl border-2 border-gray-200 z-0 relative"></div>
+            </div>
+            <div class="flex gap-3 pt-4">
+              <button @click="closeAddressModal" class="flex-1 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl">Batal</button>
+              <button @click="saveAddress" :disabled="!addressForm.latitude || isSavingAddress" class="flex-1 py-3 bg-blue-600 text-white font-bold rounded-xl disabled:opacity-50 hover:bg-blue-700 transition">
+                {{ isSavingAddress ? 'Menyimpan...' : 'Simpan' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { supabase } from '../../lib/supabase'
 import { useAuthStore } from '../../stores/auth'
 import { useCartStore } from '../../stores/cart'
 import { useToastStore } from '../../stores/toast'
+
+import 'leaflet/dist/leaflet.css'
+import L from 'leaflet'
+
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -192,6 +251,13 @@ const isCalculatingDistance = ref(false)
 const routingError = ref('')
 let routeRequestId = 0
 
+// --- STATE UNTUK MODAL ALAMAT ---
+const showAddressModal = ref(false)
+const isSavingAddress = ref(false)
+const addressForm = ref({ recipient_name: '', recipient_phone: '', address_detail: '', latitude: null, longitude: null, is_primary: false })
+let mapInstance = null
+let mapMarker = null
+
 const formatRupiah = (angka) => angka ? Math.round(angka).toLocaleString('id-ID') : '0'
 
 // 1. Ambil Pengaturan Admin, Metode Pembayaran, dan Alamat User
@@ -209,11 +275,15 @@ onMounted(async () => {
 
   // Ambil alamat user
   if (isLoggedIn.value) {
-    const { data: addresses } = await supabase.from('user_addresses').select('*').eq('user_id', authStore.user.id).order('created_at', { ascending: false })
-    myAddresses.value = addresses || []
-    if (myAddresses.value.length > 0) selectedAddress.value = myAddresses.value[0] 
+    await fetchAddresses()
   }
 })
+
+const fetchAddresses = async () => {
+  const { data } = await supabase.from('user_addresses').select('*').eq('user_id', authStore.user.id).order('created_at', { ascending: false })
+  myAddresses.value = data || []
+  if (myAddresses.value.length > 0) selectedAddress.value = myAddresses.value[0]
+}
 
 // 2. Hitung jarak rute mobil toko ke alamat user
 watch([selectedAddress, () => cartStore.groupedByMerchant], async ([newAddress, newCart]) => {
@@ -396,6 +466,106 @@ const executeCheckout = async () => {
     toast.show('Terjadi kesalahan saat checkout: ' + e.message, 'error') 
   } finally {
     isCheckoutLoading.value = false
+  }
+}
+
+// === FUNGSI MODAL ALAMAT ===
+const LELEA_LAT = -6.4716; 
+const LELEA_LNG = 108.1887;
+
+const openAddressModal = async () => {
+  if (!isLoggedIn.value) {
+    toast.show('Silakan login terlebih dahulu untuk menambah alamat.', 'error')
+    router.push('/login')
+    return
+  }
+  
+  showAddressModal.value = true
+  addressForm.value = { recipient_name: '', recipient_phone: '', address_detail: '', latitude: null, longitude: null, is_primary: myAddresses.value.length === 0 }
+  
+  await nextTick()
+  initMap()
+}
+
+const closeAddressModal = () => {
+  showAddressModal.value = false
+  if (mapInstance) { 
+    mapInstance.remove()
+    mapInstance = null
+  }
+}
+
+const initMap = () => {
+  if (mapInstance) mapInstance.remove()
+  
+  const lat = addressForm.value.latitude || LELEA_LAT
+  const lng = addressForm.value.longitude || LELEA_LNG
+  
+  mapInstance = L.map('mapContainer').setView([lat, lng], 15)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapInstance)
+  mapMarker = L.marker([lat, lng], { draggable: true }).addTo(mapInstance)
+  
+  addressForm.value.latitude = lat
+  addressForm.value.longitude = lng
+  
+  setTimeout(() => { mapInstance.invalidateSize() }, 200);
+
+  mapMarker.on('dragend', (e) => { const pos = e.target.getLatLng(); addressForm.value.latitude = pos.lat; addressForm.value.longitude = pos.lng })
+  mapInstance.on('click', (e) => { mapMarker.setLatLng(e.latlng); addressForm.value.latitude = e.latlng.lat; addressForm.value.longitude = e.latlng.lng })
+}
+
+const centerToUserLocation = () => {
+  if (navigator.geolocation) {
+    toast.show('Mencari lokasi Anda...', 'info')
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords
+        mapInstance.setView([latitude, longitude], 17)
+        mapMarker.setLatLng([latitude, longitude])
+        addressForm.value.latitude = latitude
+        addressForm.value.longitude = longitude
+        toast.show('Lokasi ditemukan!', 'success')
+      },
+      (err) => { toast.show('Gagal melacak GPS.', 'error') },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    )
+  }
+}
+
+const saveAddress = async () => {
+  if (!addressForm.value.recipient_name.trim()) {
+    return toast.show('Nama penerima wajib diisi!', 'error')
+  }
+  if (!addressForm.value.recipient_phone.trim()) {
+    return toast.show('Telepon wajib diisi!', 'error')
+  }
+  if (!addressForm.value.address_detail.trim()) {
+    return toast.show('Detail alamat wajib diisi!', 'error')
+  }
+  if (!addressForm.value.latitude || !addressForm.value.longitude) {
+    return toast.show('Tentukan lokasi di peta terlebih dahulu!', 'error')
+  }
+
+  isSavingAddress.value = true
+  try {
+    if (addressForm.value.is_primary) {
+      await supabase.from('user_addresses').update({ is_primary: false }).eq('user_id', authStore.user.id)
+    }
+
+    const { error } = await supabase.from('user_addresses').insert([{ 
+      user_id: authStore.user.id, 
+      ...addressForm.value 
+    }])
+    
+    if (error) throw error
+
+    toast.show('Alamat berhasil disimpan', 'success')
+    closeAddressModal()
+    await fetchAddresses()
+  } catch (e) { 
+    toast.show(e.message || 'Gagal menyimpan alamat', 'error') 
+  } finally { 
+    isSavingAddress.value = false 
   }
 }
 </script>
