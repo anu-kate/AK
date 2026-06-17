@@ -7,7 +7,7 @@ const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1]
 const base = process.env.VITE_BASE || (process.env.GITHUB_ACTIONS && repositoryName ? `/${repositoryName}/` : '/')
 
 export default defineConfig({
-  base,
+  base: '/',
   plugins: [
     vue(),
     tailwindcss(),
@@ -15,17 +15,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
       manifest: false,
-      devOptions: {
-        enabled: true // MENGAKTIFKAN PWA DI NPM RUN DEV
-      },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json}']
       }
     })
-  ],
-  server: {
-    allowedHosts: [
-      '1.waroenganu.my.id'
-    ]
-  }
-})
+  ]})
