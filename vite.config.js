@@ -14,6 +14,7 @@ export default defineConfig({
       manifest: false,
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
+        globDirectory: 'dist',
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/api\./i,
