@@ -32,10 +32,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Configure Vite base path
-        run: echo "VITE_BASE=/${GITHUB_REPOSITORY#*/}/" >> "$GITHUB_ENV"
-
-      - name: Build
+      - name: Build All Apps
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
@@ -46,11 +43,66 @@ jobs:
           VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
           VITE_FIREBASE_VAPID_KEY: ${{ secrets.VITE_FIREBASE_VAPID_KEY }}
-        run: npm run build
-
-      - name: Add GitHub Pages SPA fallback
         run: |
-          cp dist/index.html dist/404.html
+          REPO_NAME=${GITHUB_REPOSITORY#*/}
+          
+          # Build aplikasi dengan setting VITE_BASE masing-masing
+          VITE_BASE="/${REPO_NAME}/admin/" npm run build:admin
+          VITE_BASE="/${REPO_NAME}/customer/" npm run build:customer
+          VITE_BASE="/${REPO_NAME}/driver/" npm run build:driver
+          VITE_BASE="/${REPO_NAME}/merchant/" npm run build:merchant
+
+      - name: Prepare GitHub Pages Output
+        run: |
+          # Buat folder dist utama untuk Github Pages
+          mkdir dist
+          
+          # Salin hasil build dari tiap aplikasi ke dalam folder root dist
+          cp -r apps/admin/dist dist/admin
+          cp -r apps/customer/dist dist/customer
+          cp -r apps/driver/dist dist/driver
+          cp -r apps/merchant/dist dist/merchant
+          
+          # Buat halaman root index.html yang langsung me-redirect ke customer
+          cat << 'EOF' > dist/index.html
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="refresh" content="0; url=customer/">
+            <title>Redirecting to Customer App...</title>
+          </head>
+          <body>
+            <p>Redirecting to Customer App...</p>
+          </body>
+          </html>
+          EOF
+          
+          # Buat 404.html cerdas agar ketika user refresh di halaman /admin/ atau /driver/ 
+          # mereka tidak terlempar ke customer app
+          cat << 'EOF' > dist/404.html
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <script>
+              var path = window.location.pathname;
+              var repoMatch = path.match(/^\/([^\/]+)/);
+              var repoBase = repoMatch ? '/' + repoMatch[1] : '';
+              
+              if (path.indexOf('/admin') !== -1) { window.location.replace(repoBase + '/admin/'); }
+              else if (path.indexOf('/driver') !== -1) { window.location.replace(repoBase + '/driver/'); }
+              else if (path.indexOf('/merchant') !== -1) { window.location.replace(repoBase + '/merchant/'); }
+              else { window.location.replace(repoBase + '/customer/'); }
+            </script>
+          </head>
+          <body>
+            <p>Redirecting...</p>
+          </body>
+          </html>
+          EOF
+          
+          # Bypass Jekyll untuk file dengan underscore (_)
           touch dist/.nojekyll
 
       - name: Upload Pages artifact
