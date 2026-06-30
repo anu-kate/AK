@@ -1,0 +1,9 @@
+{
+  "name": "@anturun/shared",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.105.4"
+  }
+}

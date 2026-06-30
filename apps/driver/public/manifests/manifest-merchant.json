@@ -1,0 +1,50 @@
+{
+  "id": "/merchant?role=merchant",
+  "name": "Anturun Merchant",
+  "short_name": "Merchant",
+  "description": "Kelola pesanan, produk, promo, dan profil toko Anturun.",
+  "theme_color": "#a855f7",
+  "background_color": "#faf5ff",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/merchant?source=pwa&role=merchant",
+  "categories": ["business", "food", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/merchant-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/merchant-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Pesanan Toko",
+      "short_name": "Pesanan",
+      "url": "/merchant?source=pwa-shortcut&role=merchant",
+      "icons": [{ "src": "/icons/merchant-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshots/desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+}

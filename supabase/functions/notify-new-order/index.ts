@@ -74,11 +74,39 @@ const getAppDriverUrl = () => {
   return `${appUrl}/driver`
 }
 
-const sendFcmMessage = async (accessToken: string, token: string, payload: Record<string, string>) => {
+type PushToken = {
+  fcm_token: string
+  platform?: string | null
+  notification_sound?: string | null
+  notification_channel_id?: string | null
+}
+
+const getAndroidSoundName = (sound?: string | null) => {
+  if (sound === 'urgent') return 'order_alert'
+  if (sound === 'silent') return undefined
+  return 'order_chime'
+}
+
+const sendFcmMessage = async (accessToken: string, tokenRow: PushToken, payload: Record<string, string>) => {
   const projectId = Deno.env.get('FIREBASE_PROJECT_ID')
   if (!projectId) throw new Error('FIREBASE_PROJECT_ID is not configured')
 
+  const token = tokenRow.fcm_token
   const driverUrl = getAppDriverUrl()
+  const isAndroid = tokenRow.platform === 'android'
+  const androidSound = getAndroidSoundName(tokenRow.notification_sound)
+  const androidNotification: Record<string, unknown> = {
+    title: payload.title,
+    body: payload.body,
+    channel_id: tokenRow.notification_channel_id || 'driver_orders_default',
+    notification_priority: 'PRIORITY_MAX',
+    visibility: 'PUBLIC'
+  }
+
+  if (androidSound) {
+    androidNotification.sound = androidSound
+  }
+
   const webpush: Record<string, unknown> = {
     headers: {
       Urgency: 'high',
@@ -117,6 +145,13 @@ const sendFcmMessage = async (accessToken: string, token: string, payload: Recor
           body: payload.body
         },
         data: payload,
+        ...(isAndroid ? {
+          android: {
+            priority: 'HIGH',
+            ttl: '3600s',
+            notification: androidNotification
+          }
+        } : {}),
         webpush
       }
     })
@@ -162,7 +197,7 @@ Deno.serve(async (req) => {
     const supabase = createClient(supabaseUrl, serviceRoleKey)
     const { data: tokens, error } = await supabase
       .from('driver_push_tokens')
-      .select('fcm_token')
+      .select('fcm_token, platform, notification_sound, notification_channel_id')
       .eq('is_active', true)
 
     if (error) throw error
@@ -181,7 +216,7 @@ Deno.serve(async (req) => {
     }
 
     const results = await Promise.allSettled(
-      tokens.map((row) => sendFcmMessage(accessToken, row.fcm_token, payload))
+      tokens.map((row) => sendFcmMessage(accessToken, row, payload))
     )
 
     const invalidTokens: string[] = []

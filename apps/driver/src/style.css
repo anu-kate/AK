@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   1. ANIMASI & EFEK GLOBAL
+   ========================================================================== */
+
+/* Efek Klik Menekan pada Tombol */
+button {
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), 
+              background-color 0.2s ease, 
+              box-shadow 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+/* Transisi Halus Pergantian Tab/Konten */
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(12px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* ==========================================================================
+   2. OVERRIDE DARK MODE GLOBAL (FORCE)
+   ========================================================================== */
+
+/* Latar Belakang (Backgrounds) */
+html.dark body,
+html.dark .bg-gray-50 { background-color: #111827 !important; }
+html.dark .bg-white { background-color: #1f2937 !important; }
+html.dark .bg-gray-100 { background-color: #374151 !important; }
+html.dark .bg-gray-200 { background-color: #4b5563 !important; }
+
+/* Garis Tepi (Borders) */
+html.dark .border,
+html.dark .border-gray-50,
+html.dark .border-gray-100 { border-color: #374151 !important; }
+html.dark .border-gray-200 { border-color: #4b5563 !important; }
+html.dark .border-gray-300 { border-color: #374151 !important; }
+
+/* Warna Teks (Text Colors) */
+html.dark .text-gray-900 { color: #f9fafb !important; }
+html.dark .text-gray-800 { color: #f3f4f6 !important; }
+html.dark .text-gray-700 { color: #e5e7eb !important; }
+html.dark .text-gray-600 { color: #d1d5db !important; }
+html.dark .text-gray-500 { color: #9ca3af !important; }
+html.dark .text-gray-400 { color: #6b7280 !important; }
+
+/* Menghilangkan bayangan cerah, ganti dengan garis elegan */
+html.dark .shadow-sm, 
+html.dark .shadow,
+html.dark .shadow-md, 
+html.dark .shadow-lg { 
+  box-shadow: none !important; 
+  /* border: 1px solid #374151 !important;  */
+}
+
+/* Input Form, Textarea & Select */
+html.dark input, 
+html.dark textarea, 
+html.dark select {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+  border-color: #4b5563 !important;
+}
+
+/* ==========================================================================
+   3. PENYESUAIAN DARK MODE SPESIFIK (TOAST, BADGE, BUTTONS)
+   ========================================================================== */
+
+/* Background Komponen Akses (Transparan/Pekat) */
+html.dark .bg-blue-50, 
+html.dark .bg-blue-50\/50, 
+html.dark .bg-blue-100 { background-color: rgba(30, 58, 138, 0.4) !important; border-color: rgba(30, 58, 138, 0.8) !important; }
+
+html.dark .bg-green-50, 
+html.dark .bg-green-100 { background-color: rgba(6, 78, 59, 0.4) !important; border-color: rgba(6, 78, 59, 0.8) !important; }
+
+html.dark .bg-red-50, 
+html.dark .bg-red-100 { background-color: rgba(127, 29, 29, 0.4) !important; border-color: rgba(127, 29, 29, 0.8) !important; }
+
+html.dark .bg-yellow-50, 
+html.dark .bg-yellow-100 { background-color: rgba(113, 63, 18, 0.4) !important; border-color: rgba(113, 63, 18, 0.8) !important; }
+
+html.dark .bg-purple-100 { background-color: rgba(88, 28, 135, 0.4) !important; border-color: rgba(88, 28, 135, 0.8) !important; }
+
+/* Background Toast / Kotak Pesan Pop-up (Opacity 90%) */
+html.dark .bg-green-50\/90 { background-color: rgba(6, 78, 59, 0.9) !important; }
+html.dark .bg-red-50\/90 { background-color: rgba(127, 29, 29, 0.9) !important; }
+html.dark .bg-blue-50\/90 { background-color: rgba(30, 58, 138, 0.9) !important; }
+html.dark .bg-yellow-50\/90 { background-color: rgba(113, 63, 18, 0.9) !important; }
+
+/* Menerangkan Warna Teks Aksen agar kontras di latar gelap */
+html.dark .text-blue-600, 
+html.dark .text-blue-700, 
+html.dark .text-blue-800, 
+html.dark .text-blue-900 { color: #60a5fa !important; }
+
+html.dark .text-green-600, 
+html.dark .text-green-700, 
+html.dark .text-green-800 { color: #34d399 !important; }
+
+html.dark .text-red-500, 
+html.dark .text-red-600, 
+html.dark .text-red-700, 
+html.dark .text-red-800 { color: #f87171 !important; }
+
+html.dark .text-yellow-600, 
+html.dark .text-yellow-700, 
+html.dark .text-yellow-800 { color: #fbbf24 !important; }
+
+html.dark .text-purple-700, 
+html.dark .text-purple-800 { color: #c084fc !important; }
+
+/* Khusus Teks di dalam Tombol Utama (Pengecualian) */
+html.dark button.bg-blue-600, 
+html.dark button.bg-green-500, 
+html.dark button.bg-blue-500 {
+  color: #ffffff !important;
+}
+
+.bg-gray-50 { background-color: #dadada !important; }
+
+.animate-spin-counterclockwise {
+    animation: spin 1s linear infinite reverse;
+  }
