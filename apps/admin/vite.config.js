@@ -30,9 +30,5 @@ export default defineConfig({
         ],
       },
     })
-<<<<<<< Updated upstream:vite.config.js
-  ]
-=======
   ],
->>>>>>> Stashed changes:apps/admin/vite.config.js
 })
