@@ -3,8 +3,11 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
+const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1]
+const base = process.env.VITE_BASE || (process.env.GITHUB_ACTIONS && repositoryName ? `/${repositoryName}/` : '/')
+
 export default defineConfig({
-  base: '/', // Menggunakan root path karena menggunakan custom domain
+  base,
   plugins: [
     vue(),
     tailwindcss(),

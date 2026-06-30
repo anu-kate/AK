@@ -47,10 +47,10 @@ jobs:
           REPO_NAME=${GITHUB_REPOSITORY#*/}
           
           # Build aplikasi dengan setting VITE_BASE masing-masing
-          VITE_BASE="/${REPO_NAME}/admin/" npm run build:admin
-          VITE_BASE="/${REPO_NAME}/customer/" npm run build:customer
-          VITE_BASE="/${REPO_NAME}/driver/" npm run build:driver
-          VITE_BASE="/${REPO_NAME}/merchant/" npm run build:merchant
+          VITE_BASE="/admin/" npm run build:admin
+          VITE_BASE="/customer/" npm run build:customer
+          VITE_BASE="/driver/" npm run build:driver
+          VITE_BASE="/merchant/" npm run build:merchant
 
       - name: Prepare GitHub Pages Output
         run: |
@@ -63,20 +63,8 @@ jobs:
           cp -r apps/driver/dist dist/driver
           cp -r apps/merchant/dist dist/merchant
           
-          # Buat halaman root index.html yang langsung me-redirect ke customer
-          cat << 'EOF' > dist/index.html
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="refresh" content="0; url=customer/">
-            <title>Redirecting to Customer App...</title>
-          </head>
-          <body>
-            <p>Redirecting to Customer App...</p>
-          </body>
-          </html>
-          EOF
+          # Salin halaman landing utama ke root
+          cp landing.html dist/index.html
           
           # Buat 404.html cerdas agar ketika user refresh di halaman /admin/ atau /driver/ 
           # mereka tidak terlempar ke customer app
@@ -87,13 +75,11 @@ jobs:
             <meta charset="UTF-8">
             <script>
               var path = window.location.pathname;
-              var repoMatch = path.match(/^\/([^\/]+)/);
-              var repoBase = repoMatch ? '/' + repoMatch[1] : '';
               
-              if (path.indexOf('/admin') !== -1) { window.location.replace(repoBase + '/admin/'); }
-              else if (path.indexOf('/driver') !== -1) { window.location.replace(repoBase + '/driver/'); }
-              else if (path.indexOf('/merchant') !== -1) { window.location.replace(repoBase + '/merchant/'); }
-              else { window.location.replace(repoBase + '/customer/'); }
+              if (path.indexOf('/admin') !== -1) { window.location.replace('/admin/'); }
+              else if (path.indexOf('/driver') !== -1) { window.location.replace('/driver/'); }
+              else if (path.indexOf('/merchant') !== -1) { window.location.replace('/merchant/'); }
+              else { window.location.replace('/customer/'); }
             </script>
           </head>
           <body>

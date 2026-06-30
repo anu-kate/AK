@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anturun - Layanan Pesan Antar</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #f8fafc;
+      background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+      background-size: 100% 400px;
+      background-repeat: no-repeat;
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .app-link {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .app-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased text-gray-900 selection:bg-brand-500 selection:text-white">
+  
+  <!-- Main Content -->
+  <main class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
+    <div class="w-full max-w-4xl">
+      
+      <!-- Header Section -->
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 drop-shadow-sm">
+          Anturun
+        </h1>
+        <p class="text-lg md:text-xl text-gray-200 font-medium max-w-2xl mx-auto">
+          Sistem pesan antar terpadu. Pilih aplikasi yang ingin Anda akses di bawah ini.
+        </p>
+      </div>
+
+      <!-- Grid Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        
+        <!-- Customer App -->
+        <a href="/customer/" class="app-link glass-card rounded-3xl p-8 flex items-start space-x-6 cursor-pointer group relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="flex-shrink-0 bg-blue-100 rounded-2xl p-4 text-blue-600 group-hover:scale-110 transition-transform duration-300 relative z-10">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+          </div>
+          <div class="relative z-10">
+            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">Customer</h3>
+            <p class="text-sm text-gray-500 font-medium leading-relaxed">Pesan makanan favorit Anda dan pantau status pesanan secara real-time.</p>
+          </div>
+        </a>
+
+        <!-- Merchant App -->
+        <a href="/merchant/" class="app-link glass-card rounded-3xl p-8 flex items-start space-x-6 cursor-pointer group relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="flex-shrink-0 bg-orange-100 rounded-2xl p-4 text-orange-600 group-hover:scale-110 transition-transform duration-300 relative z-10">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V10l-2.5-4h-9L5 10v11h14zM19 21v-8m-14 8v-8M7 15h1m4 0h1m-7 4h1m4 0h1m-7-8h1m4 0h1m-7 4h1m4 0h1"></path></svg>
+          </div>
+          <div class="relative z-10">
+            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-orange-600 transition-colors">Merchant</h3>
+            <p class="text-sm text-gray-500 font-medium leading-relaxed">Kelola menu, terima pesanan baru, dan pantau pendapatan restoran Anda.</p>
+          </div>
+        </a>
+
+        <!-- Driver App -->
+        <a href="/driver/" class="app-link glass-card rounded-3xl p-8 flex items-start space-x-6 cursor-pointer group relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="flex-shrink-0 bg-green-100 rounded-2xl p-4 text-green-600 group-hover:scale-110 transition-transform duration-300 relative z-10">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <div class="relative z-10">
+            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-green-600 transition-colors">Driver</h3>
+            <p class="text-sm text-gray-500 font-medium leading-relaxed">Terima orderan, lihat rute pengiriman, dan kumpulkan penghasilan harian.</p>
+          </div>
+        </a>
+
+        <!-- Admin App -->
+        <a href="/admin/" class="app-link glass-card rounded-3xl p-8 flex items-start space-x-6 cursor-pointer group relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-purple-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="flex-shrink-0 bg-purple-100 rounded-2xl p-4 text-purple-600 group-hover:scale-110 transition-transform duration-300 relative z-10">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+          </div>
+          <div class="relative z-10">
+            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-purple-600 transition-colors">Admin</h3>
+            <p class="text-sm text-gray-500 font-medium leading-relaxed">Pusat kontrol sistem, kelola pengguna, verifikasi pendaftaran, dan laporan.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-8 text-center">
+    <p class="text-sm font-medium text-gray-500">
+      &copy; 2026 Anturun. All rights reserved.
+    </p>
+  </footer>
+
+</body>
+</html>
