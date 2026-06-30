@@ -1,5 +1,5 @@
 {
-  "id": "/merchant?role=merchant",
+  "id": "/merchant/",
   "name": "Anturun Merchant",
   "short_name": "Merchant",
   "description": "Kelola pesanan, produk, promo, dan profil toko Anturun.",
@@ -8,18 +8,18 @@
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait",
-  "scope": "/",
-  "start_url": "/merchant?source=pwa&role=merchant",
+  "scope": "/merchant/",
+  "start_url": "/merchant/?source=pwa",
   "categories": ["business", "food", "productivity"],
   "icons": [
     {
-      "src": "/icons/merchant-192.png",
+      "src": "/merchant/icons/merchant-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/merchant-512.png",
+      "src": "/merchant/icons/merchant-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -29,19 +29,19 @@
     {
       "name": "Pesanan Toko",
       "short_name": "Pesanan",
-      "url": "/merchant?source=pwa-shortcut&role=merchant",
-      "icons": [{ "src": "/icons/merchant-192.png", "sizes": "192x192", "type": "image/png" }]
+      "url": "/merchant/?source=pwa-shortcut",
+      "icons": [{ "src": "/merchant/icons/merchant-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
   "screenshots": [
     {
-      "src": "/screenshots/mobile.png",
+      "src": "/merchant/screenshots/mobile.png",
       "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "/screenshots/desktop.png",
+      "src": "/merchant/screenshots/desktop.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide"

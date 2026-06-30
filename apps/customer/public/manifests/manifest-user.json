@@ -1,5 +1,5 @@
 {
-  "id": "/?role=user",
+  "id": "/customer/",
   "name": "Anturun",
   "short_name": "Anturun",
   "description": "Pesan makanan dan kebutuhan harian dari toko sekitar.",
@@ -8,18 +8,18 @@
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait",
-  "scope": "/",
-  "start_url": "/?source=pwa&role=user",
+  "scope": "/customer/",
+  "start_url": "/customer/?source=pwa",
   "categories": ["food", "shopping", "lifestyle"],
   "icons": [
     {
-      "src": "/icons/user-192.png",
+      "src": "/customer/icons/user-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/user-512.png",
+      "src": "/customer/icons/user-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -29,19 +29,19 @@
     {
       "name": "Pesan Menu",
       "short_name": "Pesan",
-      "url": "/?source=pwa-shortcut&role=user",
-      "icons": [{ "src": "/icons/user-192.png", "sizes": "192x192", "type": "image/png" }]
+      "url": "/customer/?source=pwa-shortcut",
+      "icons": [{ "src": "/customer/icons/user-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
   "screenshots": [
     {
-      "src": "/screenshots/mobile.png",
+      "src": "/customer/screenshots/mobile.png",
       "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "/screenshots/desktop.png",
+      "src": "/customer/screenshots/desktop.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide"

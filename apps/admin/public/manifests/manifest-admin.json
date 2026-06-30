@@ -1,5 +1,5 @@
 {
-  "id": "/admin?role=admin",
+  "id": "/admin/",
   "name": "Anturun Admin",
   "short_name": "Admin",
   "description": "Kelola pengguna, pesanan, tarif, pembayaran, dan pengaturan Anturun.",
@@ -8,18 +8,18 @@
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait",
-  "scope": "/",
-  "start_url": "/admin?source=pwa&role=admin",
+  "scope": "/admin/",
+  "start_url": "/admin/?source=pwa",
   "categories": ["business", "productivity", "utilities"],
   "icons": [
     {
-      "src": "/icons/admin-192.png",
+      "src": "/admin/icons/admin-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/admin-512.png",
+      "src": "/admin/icons/admin-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -29,19 +29,19 @@
     {
       "name": "Panel Admin",
       "short_name": "Panel",
-      "url": "/admin?source=pwa-shortcut&role=admin",
-      "icons": [{ "src": "/icons/admin-192.png", "sizes": "192x192", "type": "image/png" }]
+      "url": "/admin/?source=pwa-shortcut",
+      "icons": [{ "src": "/admin/icons/admin-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
   "screenshots": [
     {
-      "src": "/screenshots/mobile.png",
+      "src": "/admin/screenshots/mobile.png",
       "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "/screenshots/desktop.png",
+      "src": "/admin/screenshots/desktop.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide"

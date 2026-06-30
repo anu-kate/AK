@@ -1,5 +1,5 @@
 {
-  "id": "/login?role=driver",
+  "id": "/driver/",
   "name": "Anturun Driver",
   "short_name": "Driver",
   "description": "Ambil orderan, kelola pengantaran, performa, dan Antur Kredit.",
@@ -8,18 +8,18 @@
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait",
-  "scope": "/",
-  "start_url": "/login?source=pwa&role=driver",
+  "scope": "/driver/",
+  "start_url": "/driver/?source=pwa",
   "categories": ["business", "navigation", "productivity"],
   "icons": [
     {
-      "src": "/icons/driver-192.png",
+      "src": "/driver/icons/driver-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icons/driver-512.png",
+      "src": "/driver/icons/driver-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -29,19 +29,19 @@
     {
       "name": "Orderan Driver",
       "short_name": "Orderan",
-      "url": "/driver?source=pwa-shortcut&role=driver",
-      "icons": [{ "src": "/icons/driver-192.png", "sizes": "192x192", "type": "image/png" }]
+      "url": "/driver/?source=pwa-shortcut",
+      "icons": [{ "src": "/driver/icons/driver-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
   "screenshots": [
     {
-      "src": "/screenshots/mobile.png",
+      "src": "/driver/screenshots/mobile.png",
       "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "/screenshots/desktop.png",
+      "src": "/driver/screenshots/desktop.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide"
