@@ -3,11 +3,7 @@
     <h2 class="text-2xl font-black mb-4 text-gray-900">Keranjang Saya</h2>
 
     <div v-if="cartStore.items.length === 0" class="bg-white p-12 text-center rounded-3xl shadow-sm border border-gray-200">
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-      <svg class="w-20 h-20 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h[...]"></path></svg>
-=======
       <ShoppingCartIcon class="w-12 h-12 text-gray-300 mx-auto mb-4" />
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
       <p class="text-gray-500 font-medium mb-6">Keranjang belanja Anda masih kosong.</p>
       <button @click="emit('changeTab', 'home')" class="px-6 py-3 bg-blue-50 text-blue-600 font-bold rounded-xl hover:bg-blue-100 transition flex items-center justify-center gap-2 mx-auto">
         <PlusIcon class="w-5 h-5" />
@@ -19,11 +15,7 @@
       
       <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-200">
         <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-          <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1[...]"></path></svg>
-=======
           <MapPinIcon class="size-6 text-gray-400" />
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
           Alamat Pengiriman
         </h3>
         
@@ -34,11 +26,7 @@
             </option>
           </select>
           <p v-if="selectedAddress" class="text-xs text-gray-500 mt-2 ml-1 flex items-center gap-1.5">
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-            <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a[...]"></path></svg>
-=======
             <PhoneIcon class="size-4 text-gray-400" />
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
             {{ selectedAddress.recipient_phone }}
           </p>
         </div>
@@ -51,11 +39,7 @@
       <div class="space-y-4">
         <div v-for="group in cartStore.groupedByMerchant" :key="group.merchant_id" class="bg-white p-5 rounded-3xl shadow-sm border border-gray-200">
           <h3 class="font-black text-gray-800 border-b border-gray-100 pb-3 mb-4 flex items-center gap-2">
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V10l-2.5-4h-9L5 10v1[...]"></path></svg>
-=======
             <BuildingStorefrontIcon class="size-6 text-gray-400" />
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
             {{ group.merchant_name }}
           </h3>
           
@@ -74,13 +58,8 @@
                   <MinusIcon class="w-4 h-4" />
                 </button>
                 <span class="font-black text-sm w-6 text-center text-gray-800">{{ item.quantity }}</span>
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-                <button @click="cartStore.addItem(item, { id: group.merchant_id, full_name: group.merchant_name, latitude: item.lat, longitude: item.lng })" class="w-8 h-8 flex items-center justify-ce[...]">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-=======
                 <button @click="cartStore.addItem(item, { id: group.merchant_id, full_name: group.merchant_name, latitude: item.lat, longitude: item.lng })" class="w-8 h-8 flex items-center justify-center font-bold text-white rounded-lg shadow-sm transition" :class="item.is_available ? 'bg-blue-600' : 'bg-blue-600'">
                   <PlusIcon class="w-4 h-4" />
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
                 </button>
               </div>
             </div>
@@ -90,11 +69,7 @@
 
       <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-200">
         <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-          <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h1[...]"></path></svg>
-=======
           <BanknotesIcon class="size-6 text-gray-400" />
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
           Metode Pembayaran
         </h3>
         
@@ -107,11 +82,7 @@
           >
             <input type="radio" :value="method.id" v-model="paymentMethod" class="hidden" />
             <span v-if="method.icon" class="text-2xl shrink-0">{{ method.icon }}</span>
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-            <svg v-else class="w-7 h-7 text-gray-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 [...]"></path></svg>
-=======
             <BanknotesIcon v-else class="w-7 h-7 text-gray-500 shrink-0" />
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
             <div class="min-w-0">
               <p class="font-bold text-sm text-gray-800 truncate">{{ method.name }}</p>
               <p class="text-[10px] text-gray-500 truncate">{{ method.description }}</p>
@@ -135,11 +106,7 @@
           <div class="flex justify-between text-sm text-gray-500">
             <span class="flex items-center gap-1.5">
               Ongkos Kirim 
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-              <svg v-if="isCalculatingDistance" class="animate-spin w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="[...]"></path></svg>
-=======
               <ArrowPathIcon v-if="isCalculatingDistance" class="w-3 h-3 text-gray-400 animate-spin" />
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
               <span v-else-if="jarakTempuhKm > 0" class="text-[10px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-mono font-bold">{{ jarakTempuhKm.toFixed(1) }} km</span>
             </span>
             <span class="font-medium text-gray-700">Rp {{ formatRupiah(ongkosKirim) }}</span>
@@ -165,15 +132,9 @@
           <span class="font-black text-2xl text-blue-600">Rp {{ formatRupiah(finalTotalPrice) }}</span>
         </div>
 
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-        <button @click="openCheckoutConfirm" :disabled="isCheckoutDisabled" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-extrabold shadow-md transition disabled:opa[...]">
-          <svg v-if="isCheckoutLoading || isCalculatingDistance" class="animate-spin w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-[...]"></path></svg>
-          <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 [...]"></path></svg>
-=======
         <button @click="openCheckoutConfirm" :disabled="isCheckoutDisabled" class="flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-extrabold shadow-md transition disabled:opacity-50">
           <ArrowPathIcon v-if="isCheckoutLoading || isCalculatingDistance" class="w-5 h-5 text-white animate-spin" />
           <CheckIcon v-else class="w-5 h-5 text-white" />
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
           Buat Pesanan Sekarang
         </button>
       </div>
@@ -182,11 +143,7 @@
 
     <div v-if="showConfirmCheckout" class="fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4 animate-fade-in">
       <div class="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl text-center">
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-        <svg class="w-16 h-16 mx-auto text-blue-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 [...]"></path></svg>
-=======
         <CheckIcon class="w-12 h-12 text-green-600 mx-auto mb-4" />
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
         <h3 class="text-xl font-black text-gray-900 mb-2">Konfirmasi Pesanan</h3>
         <p class="text-sm text-gray-500 mb-2">
           Total Pembayaran: <br/><strong class="text-blue-600 text-2xl">Rp {{ formatRupiah(finalTotalPrice) }}</strong>
@@ -234,11 +191,7 @@
               <div class="flex justify-between items-center mb-1 mt-2">
                 <label class="text-xs font-bold text-gray-500">Tentukan Titik Peta (Wajib)</label>
                 <button type="button" @click="centerToUserLocation" class="text-[10px] bg-blue-100 text-blue-700 px-2 py-1 rounded font-bold hover:bg-blue-200 flex items-center gap-1">
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1[...]"></path></svg>
-=======
                   <MapPinIcon class="w-3 h-3" />
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
                   Ke Lokasi Saya
                 </button>
               </div>
@@ -258,10 +211,7 @@
 </template>
 
 <script setup>
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
-=======
 import { BuildingStorefrontIcon, MapPinIcon, PhoneIcon, ShoppingCartIcon, BanknotesIcon, CheckIcon, PlusIcon, MinusIcon, ArrowPathIcon } from '@heroicons/vue/24/outline'
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { supabase } from '../../lib/supabase'
@@ -619,8 +569,4 @@ const saveAddress = async () => {
     isSavingAddress.value = false 
   }
 }
-<<<<<<< Updated upstream:src/components/tabs/CartTab.vue
 </script>
-=======
-</script>
->>>>>>> Stashed changes:apps/customer/src/components/tabs/CartTab.vue
